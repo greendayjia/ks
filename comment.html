@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+<script>
+    
+    function display(odj) {
+
+        if (document.getElementsByName(odj.name)[3].style.height =="0px") {
+           
+            document.getElementsByName(odj.name)[2].innerHTML = "─";
+            document.getElementsByName(odj.name)[3].style.height = "250px";           
+           
+        }
+        else {
+          /*  document.getElementById("btn").innerHTML = "+";*/
+            document.getElementsByName(odj.name)[2].innerHTML = "+";
+            document.getElementsByName(odj.name)[3].style.height = "0px";           
+        }
+    }
+  function deletediv(odj) {
+
+        document.getElementsByName(odj.name)[0].style.display = "none";
+        document.getElementsByName(odj.name)[3].style.display = "none";
+        document.getElementsByName(odj.name)[4].style.display = "none";
+    }
+    
+</script>
+<style>
+        .btndisplay
+        {
+            border-radius: 25px;
+            font-size: 19px;
+            width:30px;
+            border: medium solid #FF9933; 
+            font-family: 微軟正黑體; 
+            background-color: #FFFFFF; 
+            cursor: pointer; 
+            float: right; 
+            color: #FF9933;
+            outline:none;
+            font-weight: bolder;
+        }
+        .btndisplay:hover
+        {
+          border: medium solid white; 
+          color: white;
+           background-color: #FF9933; 
+        }
+         div
+        {
+          
+          width: 500px; 
+          background-color: #996633; 
+          font-family: 微軟正黑體; 
+          font-size: 25px;
+          color: #FFFFFF;
+          transition: height  0.5s;  
+        }
+    </style>
+</head>
+<body>  
+        <div name="post1" style=" font-size:25px; height: 100%; ">
+            AAA <button name="post1" class="btndisplay" onclick="deletediv(this)">x</button><button name="post1" class="btndisplay" onclick="display(this)">+</button>
+           <span style="  float: right; "><script> d = new Date();document.write(d.getFullYear()+"/"+(d.getMonth()+1) +"/"+ d.getDate() +"　");</script> </span></div>
+ 
+        <div name="post1" style="width: 500px; height: 0px; overflow: hidden;">
+           
+        <blockquote  style=" margin:0px;">希臘民眾先前才在公投中投票反撙節，歐元區13日卻與希臘政府
+        敲定嚴苛的紓困改革協議，引發希臘人民強烈不滿，認為歐元區
+        龍頭德國藉此羞辱他們，對於新的紓困案能否改</blockquote>
+        </div>
+        <div name="post1" style=" background-color:transparent;  height: 0.5cm; width: 500px;"></div>
+        <div name="post2" style=" font-size:25px; height: 100%; ">
+            BBB <button name="post2" class="btndisplay" onclick="deletediv(this)">x</button><button name="post2" class="btndisplay" onclick="display(this)">+</button>
+          <span style="  float: right; "><script> d = new Date();document.write(d.getFullYear()+"/"+(d.getMonth()+1) +"/"+ d.getDate() +"　");</script> </span></div>
+
+     <div name="post2" style="width: 500px; height: 0px; overflow: hidden;">
+           
+      <blockquote  style=" margin:0px;">一輛法拉利跑車今天凌晨2時許行經國道3號南下台南348.6公里路段時，
+     疑與另一輛自小客車擦撞，車輛零件散落在長約200公尺路面上，相當凌亂，
+     隨後起火燃燒。消防人員趕到撲滅火勢時，法拉利已成一堆廢鐵，所幸兩車上人員
+    都未受傷。</blockquote>
+        </div>
+       
+     <div name="post2" style=" background-color:transparent;  height: 0.5cm; width: 500px;"></div>
+        <div name="post3" style=" font-size:25px; height: 100%; ">
+            CCC <button name="post3" class="btndisplay" onclick="deletediv(this)">x</button><button name="post3" class="btndisplay" onclick="display(this)">+</button>
+          <span style="  float: right; "><script> d = new Date();document.write(d.getFullYear()+"/"+(d.getMonth()+1) +"/"+ d.getDate() +"　");</script> </span></div>
+
+     <div name="post3" style="width: 500px; height: 0px; overflow: hidden;">
+           
+      <blockquote  style=" margin:0px;"> 一輛法拉利跑車今天凌晨2時許行經國道3號南下台南348.6公里路段時，
+     疑與另一輛自小客車擦撞，車輛零件散落在長約200公尺路面上，相當凌亂，
+     隨後起火燃燒。消防人員趕到撲滅火勢時，法拉利已成一堆廢鐵，所幸兩車上人員
+    都未受傷。</blockquote>
+        </div>
+
+        </div>
+       
+         
+</body>
+</html>
