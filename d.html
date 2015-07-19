@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+
+body
+{ margin:0px; 
+font-family:微軟正黑體;
+ transition: scrollTop 1s;
+}
+
+header{
+    background-color: rgba(0,0,0,.5);  
+    height: 7vh;     width:100%;
+     font-size:5vh;    
+    z-index:2;
+    color:pink;
+    position:fixed;
+}
+.a {
+    height: 100vh;     width:100%;
+    background-color: grey;
+    position:relative;
+}
+.b {
+    height: 100vh;     width:100%;
+    background-color: rgb(176,81,183);
+    position:relative;
+   overflow:hidden;
+}
+.info {
+    height: 100vh;     width:100%;
+    background-color: rgb(204,239,101);
+    position:absolute;
+    overflow:auto;
+
+}
+#slideA {
+    height: 60vh;   width: 45%;
+    top:25vh;
+    left:-45%;
+    background-color: white;
+    position:absolute;
+    z-index=1;
+   transition: left .5s;
+}
+#slideB {
+    height: 60vh;   width: 45%;
+    top:25vh;   right:-45%;
+    background-color: white;
+    position:absolute;
+    z-index=1;
+    transition: right .5s;
+     
+}
+label
+{
+cursor:pointer;
+}
+</style>
+<script>
+function slide() {
+        shiftY = document.getElementById("main").scrollTop; //向下捲動距離
+         h=window.innerHeight;  //每一頁高度 
+
+	if(shiftY>(h*.7) && shiftY<(h*1.6))	
+	{
+	    document.getElementById ("slideA").style.left="0%";
+	    document.getElementById ("slideB").style.right="0%";
+	}
+	   	
+	else 
+	{
+	    document.getElementById ("slideA").style.left="-45%";
+                    document.getElementById ("slideB").style.right="-45%";
+
+	}
+                
+}
+function gotopage(page) {
+ h=window.innerHeight
+
+document.getElementById("main").scrollTop=h*page;
+//window.location.hash="contact2";
+}
+</script>
+</head>
+<body  id="main" onscroll="slide()">
+
+
+     <header><label id="0"  onclick="gotopage(this.id)" >首頁</label>
+                    <label id="1" onclick="gotopage(this.id)">訊息</label> 
+                   <label id="2" onclick="gotopage(this.id)">關於</label> 
+                   <label id="3" onclick="gotopage(this.id)">收費</label> 
+                   <label id="4" onclick="gotopage(this.id)" >相簿</label>
+                   <label id="5" onclick="gotopage(this.id)">聯絡</label></header>
+<div id="index2" class="a"><span style="font-size:1cm"><br/>首頁</span></div>
+<div id="information2" class="b">
+     <div class="info">     
+     <span style="font-size:1cm"><br/>訊息</span>
+     </div>
+    <div id="slideA">  <span style="font-size:1cm">衛教知識</span>
+    </div>
+   <div id="slideB">   <span  style="font-size:1cm">最新消息</span>
+    </div>
+</div>
+<div id="about2" class="a"><span style="font-size:1cm"><br/>關於</span></div>
+<div id="charge2" class="b"><span style="font-size:1cm"><br/>收費</span></div>
+<div id="album2" class="a"><span style="font-size:1cm"><br/>相簿</span></div>
+<div id="contact2"class="b"><span style="font-size:1cm"><br/>聯絡</span></div>
+
+
+
+</body>
+</html>
