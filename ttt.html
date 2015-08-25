@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style>
+        *{
+        padding:0;
+        margin:0;        
+    }
+         .p06{
+        position: relative;
+        overflow:auto;
+        /*background-image:url(images/p06.jpg);*/
+        background: linear-gradient(rgb(255,128,64), rgb(0,128,255));
+        background-size:cover;
+        background-repeat: no-repeat;
+        height:100vh;
+    }
+           footer{
+         background-color:rgba(0,0,0,0.8);         
+         font-size:30px;
+         width:100%;
+         position:absolute;  
+         bottom:0cm;
+         height:2cm;
+         color:pink;
+         /*top:88%;*/
+    }     
+        </style>
+</head>
+<body>
+     
+    <div class="p06" >                       
+      <footer ><a href="http://www.google.com" target="_blank"style="color:pink;text-decoration:none" title="網站連結">
+            網站連結 </a>
+            <a href="*" style="color:pink;text-decoration:none" title="後台登入">
+                後台登入</a>
+
+        </footer>  
+        <div style="height: 70px;"></div>
+        <div style="display: table; padding: 1em; height: 500px; border: 1px solid black;" class="pp">
+             <div style=" display: table-cell; border: 1px solid black; width: 50%; height: 50%; padding: 1em;">
+               <iframe src="http://ksretirement.azurewebsites.net/Message.aspx"  width="480" height="530"  frameborder="0"></iframe>
+                
+            </div>
+            <div style="display: table-cell; vertical-align: bottom; border: 1px solid black; padding: 1em;">
+                <span style="font-size:20px;">地址：高雄市燕巢區安招里安東街188號</span>
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+
+      
+    </div>
+  
+</body>
+</html>
