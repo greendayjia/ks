@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+	<script>
+ function slide() {
+
+            // shiftY = document.getElementById("main").scrollTop; //向下捲動距離
+            shiftY = window.pageYOffset;
+            h = window.innerHeight;  //每一頁高度 
+
+            if (shiftY > (h * .7) && shiftY < (h * 1.6)) {
+                document.getElementById("slideA").style.left = "1%";
+                document.getElementById("slideB").style.right = "1%";
+            }
+            else {
+                document.getElementById("slideA").style.left = "-45%";
+                document.getElementById("slideB").style.right = "-45%";
+            }
+        }
+
+    </script>
+<style>
+.p01 {
+        height: 100vh;
+        width: 100%;
+        background-color: green;
+        position: relative;
+        overflow: hidden;
+    }
+.p02 {
+        height: 100vh;
+        width: 100%;
+        background-color: grey;
+        position: relative;
+        overflow: hidden;
+    }
+	.p03 {
+        height: 100vh;
+        width: 100%;
+        background-color: blue;
+        position: relative;
+        overflow: hidden;
+    }
+ #slideA {
+        height: 60vh;
+        width: 45%;
+        top: 25vh;
+        left: -45%;
+        background-color: white;
+        position: absolute;
+        transition: left .5s;
+    }
+	  #slideB {
+        height: 60vh;
+        width: 45%;
+        top: 25vh;
+        right: -45%;
+        background-color: white;
+        position: absolute;
+        transition: right .5s;
+    }
+</style>	
+</head>	
+	<body id="main" onscroll="slide()">
+	<div class="p01" >
+	</div>
+	 <div class="p02" >
+		<div id="slideA"><span style="font-size:1cm">衛教知識</span>
+		</div>
+		<div id="slideB"><span style="font-size:1cm">衛教知識</span>
+		</div>
+		
+	</div>	
+	<div class="p03" >
+	</div>
+	</body>    
