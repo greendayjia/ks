@@ -1,0 +1,197 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+      <style>
+    body {
+        font-family: 微軟正黑體;
+        background-color: white;
+    }
+
+    .div1 {
+        width: 700px;
+        font-size: 25px;
+        overflow: hidden;
+        background-color: white;
+        margin: 0px auto;
+		
+    }
+
+    .glasscss {
+        border: .4cm solid rgb(153,95,64);
+        border-radius: 5cm;
+        width: 200px;
+        height: 200px;
+        position: absolute;      
+        overflow: hidden;
+        z-index: -2;
+        cursor: none;
+        box-shadow: 0px 0px 50px black inset;
+        opacity:0;
+
+    }
+    
+
+    .magnifycss {
+        border: .4cm solid rgb(153,95,64);
+        border-radius: 5cm;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        background-color: white;
+        transform: rotate(45deg);
+        z-index: -2;
+        cursor: none;
+        opacity:0;
+    }
+
+        .magnifycss:after {
+            content: " ";
+            background-color: rgb(153,95,64);
+            width: 3cm;
+            height: .7cm;
+            position: absolute;
+            top: 45%;
+            left: 100%;
+        }
+
+    .zoomcss {
+        position: absolute;
+        font-size: 35px;        
+    }
+
+    .btncss {
+        border: .2cm solid rgb(128,128,192);
+        color: white;
+        background-color: rgb(128,128,192);
+        border-radius: .5cm;
+        cursor: pointer;
+        width: 2.5cm;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0px auto;
+        
+    }
+
+        .btncss:hover {
+            border: .2cm solid rgb(179,179,255);
+            background-color: rgb(179,179,255);
+        }
+</style>
+</head>
+<body>   
+      <div id="btn" class="btncss" onclick="excute(this.id);">放大鏡</div>
+    
+    <form id="form1" runat="server">
+  <div id="d1" onmousemove="myFunction(event)" class='div1'>
+     <div id='acritle'>
+                <br />				
+                Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation <br/>
+				of a document written in a markup language.[1] Although most often used to set the visual style<br/>
+				of web pages and user interfaces written in HTML and XHTML, the language can be applied to any<br/>
+				XML document, including plain XML, SVG and XUL, and is applicable to rendering in speech, or <br/>
+				on other media. Along with HTML and JavaScript, CSS is a cornerstone technology used by most <br/>
+				websites to create visually engaging webpages, user interfaces for web applications, and user <br/>
+				interfaces for many mobile applications.[2]<br/><br/>
+
+				CSS is designed primarily to enable the separation of document content from document presentation, <br/>
+				including aspects such as the layout, colors, and fonts.[3] This separation can improve content<br/>
+				accessibility, provide more flexibility and control in the specification of presentation <br/>
+				characteristics, enable multiple HTML pages to share formatting by specifying the relevant<br/>
+				CSS in a separate .css file, and reduce complexity and repetition in the structural content.				
+           </div>
+             
+            
+            <div id='magnify' class='magnifycss'></div>
+            <div id='glass' class='glasscss'>                
+                <div id='zoomin' class="zoomcss"></div>
+            </div>
+            <div id='shadow' class='glasscss'></div>  
+          
+        </div>
+    </form>
+ 
+</body>
+<script>
+    execute = "正常大小";
+    id = document.getElementById("btn").innerHTML;
+    w = document.getElementById("glass").clientWidth;
+    h = document.getElementById("glass").clientHeight;
+    w1 = document.getElementById("d1").clientWidth;
+    h1 = document.getElementById("d1").clientHeight;
+    x1 = document.getElementById("d1").offsetLeft;
+    y1 = document.getElementById("d1").offsetTop;
+
+    //document.getElementById("glass").style.left = x1*1.5 + "px";
+    document.getElementById("glass").style.left = "500px";
+    document.getElementById("glass").style.top = y1 + "px";
+    document.getElementById("shadow").style.left = "500px";
+    document.getElementById("shadow").style.top = y1 + "px";
+    document.getElementById("magnify").style.left = "400px";
+    //document.getElementById("magnify").style.left = x1 * 2 + "px";
+    document.getElementById("magnify").style.top = y1 + "px";
+
+    document.getElementById("zoomin").innerHTML = document.getElementById("acritle").innerHTML;
+    document.getElementById("zoomin").style.width = w1 + "px";
+    document.getElementById("zoomin").style.height = h1 + "px";
+    w /= 2; h /= 2;
+    function excute(getid) {
+
+        name=document.getElementById(getid).innerHTML;
+       
+        if (name == id) {
+            execute = "放大鏡";
+            document.getElementById(getid).innerHTML = "正常大小";
+        }
+        else {
+            execute = "正常大小";
+            document.getElementById(getid).innerHTML = id;
+        }
+    }
+    function myFunction(e) {
+        if (execute == "放大鏡") {
+            var x = e.clientX;
+            var y = e.clientY;			
+            document.getElementById("glass").style.zIndex = "2";
+            document.getElementById("shadow").style.zIndex = "3";
+            document.getElementById("magnify").style.zIndex = "2";
+            var coor = "Coordinates: (" + x + "," + y + ")";
+            if (x < x1 || y < y1 || x > w1 + x1 || y > h1 + y1) {
+                document.getElementById("glass").style.left = "400px";
+                document.getElementById("glass").style.top = y1 + "px";
+                document.getElementById("shadow").style.left = "400px";
+                document.getElementById("shadow").style.top = y1 + "px";
+                document.getElementById("magnify").style.left = "400px";
+                document.getElementById("magnify").style.top = y1 + "px";
+
+                document.getElementById("glass").style.zIndex = "-2";
+                document.getElementById("magnify").style.zIndex = "-2";
+                document.getElementById("shadow").style.zIndex = "-2";
+                document.getElementById("glass").style.opacity = "0";
+                document.getElementById("magnify").style.opacity = "0";
+                document.getElementById("shadow").style.opacity = "0";
+            }
+            else {
+                document.getElementById("glass").style.opacity = "1";
+                document.getElementById("magnify").style.opacity = "1";
+                document.getElementById("shadow").style.opacity = "1";
+                document.getElementById("glass").style.left = (x - w) + "px";
+                document.getElementById("glass").style.top = (y - h) + "px";
+                document.getElementById("magnify").style.left = (x - w) + "px";
+                document.getElementById("magnify").style.top = (y - h) + "px";
+                document.getElementById("shadow").style.left = (x - w) + "px";
+                document.getElementById("shadow").style.top = (y - h) + "px";
+                document.getElementById("zoomin").style.left = x1 * 1- (x - w) + "px";
+                document.getElementById("zoomin").style.top = y1 * .4 - (y - h) + "px";
+
+            }
+
+        }
+    }
+
+</script>
+</html>
