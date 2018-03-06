@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calendar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+		Title<br/>
+		<input type='text' class="form-control title">
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-sm-12">
+		Location<br/>
+		<input type='text' class="form-control location">
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-sm-3">
+		from<br/>
+		<input type='text' class="form-control datepicker startdate" value="2018/03/06" readonly>
+		</div>
+		<div class="col-sm-6">
+			 Time<br/>
+			<select class="form-control time startHour">
+			<option value='00'>00</option><option value='01'>01</option><option value='02'>02</option><option value='03'>03</option><option value='04'>04</option><option value='05'>05</option><option value='06'>06</option><option value='07'>07</option><option value='08'>08</option><option value='09'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='21'>21</option><option value='22'>22</option><option value='23'>23</option>			</select>：
+			<select class="form-control time startMin">
+			<option value='00'>00</option><option value='05'>05</option><option value='10'>10</option><option value='15'>15</option><option value='20'>20</option><option value='25'>25</option><option value='30'>30</option><option value='35'>35</option><option value='40'>40</option><option value='45'>45</option><option value='50'>50</option><option value='55'>55</option>			</select>
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-sm-3">
+		To<br/>
+			<input type='text' class="form-control datepicker enddate" value="2018/03/06"  readonly>
+		</div>
+		<div class="col-sm-6">
+			 Time<br/>
+			<select class="form-control time endHour">
+			<option value='00'>00</option><option value='01'>01</option><option value='02'>02</option><option value='03'>03</option><option value='04'>04</option><option value='05'>05</option><option value='06'>06</option><option value='07'>07</option><option value='08'>08</option><option value='09'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='21'>21</option><option value='22'>22</option><option value='23'>23</option>			</select>：
+			<select class="form-control time endMin">
+			<option value='00'>00</option><option value='05'>05</option><option value='10'>10</option><option value='15'>15</option><option value='20'>20</option><option value='25'>25</option><option value='30'>30</option><option value='35'>35</option><option value='40'>40</option><option value='45'>45</option><option value='50'>50</option><option value='55'>55</option>			</select>
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-sm-12">
+		Description<br/>
+		<textarea class="form-control detail"></textarea>
+		</div>
+	</div><br/>
+	<div class="row">
+		<div class="col-sm-4">
+		<button id="submit" type="button" class="btn btn-primary">加入Google行事曆</button>
+		</div>
+	</div>
+</div>
+<style>
+.time{
+	width:100px;
+	display:inline;
+}
+.datepicker{
+	background:white!important;
+}
+textarea{
+	resize:none;
+	height:100px;
+}
+</style>
+<script>
+	$( ".datepicker" ).datepicker({
+		dateFormat: "yy/mm/dd"
+	});
+	$("#submit").click(function(){
+		from=$(".startdate").val().replace(/\//g, "")+"T"+$(".startHour").val()+$(".startMin").val()+"00"
+		to=$(".enddate").val().replace(/\//g, "")+"T"+$(".endHour").val()+$(".endMin").val()+"00"
+		detail=$(".detail").val().replace(/\n/g, "%0A")
+		location="http://www.google.com/calendar/event?action=TEMPLATE&text="+$(".title").val()+"&dates="+from+"/"+to+"&details="+detail+"&location="+$(".location").val()
+	})
+</script>
